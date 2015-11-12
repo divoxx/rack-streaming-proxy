@@ -96,7 +96,7 @@ class Rack::StreamingProxy::Proxy
       end
 
       self.class.log :info, "Finishing proxy request to: #{destination_uri}"
-      [response.status, response.headers, response]
+      [response.status, response.headers.except('Status'), response]
 
     # Continue down the middleware stack if the request is not to be proxied.
     else
